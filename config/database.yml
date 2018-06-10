@@ -24,8 +24,8 @@ default: &default
 development:
   <<: *default
   database: task_development
-  username: postgres
-  password: PascalHate1
+  #username: postgres
+  #password: PascalHate1
 
 
   # The specified database role being used to connect to postgres.
