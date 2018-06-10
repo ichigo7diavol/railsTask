@@ -24,8 +24,8 @@ default: &default
 development:
   <<: *default
   database: task_development
-  #username: postgres
-  #password: PascalHate1
+  username: postgres
+  password: PascalHate1
 
 
   # The specified database role being used to connect to postgres.
@@ -61,6 +61,8 @@ development:
 test:
   <<: *default
   database: task_test
+  username: postgres
+  password: PascalHate1
 
   # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
