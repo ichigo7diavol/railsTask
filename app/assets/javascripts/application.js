@@ -10,5 +10,28 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery3
 //= require rails-ujs
 //= require_tree .
+
+//$("submit-btn").click(function(event) {
+//  event.preventDefault();
+//  alert("you clicked me");
+//  $("#form-id").submit();
+//});
+
+
+$(document).ready(function() {
+  $(document).on("click", "#sub_btn", function(){
+    event.preventDefault();
+    $("#sub_form").submit();
+  });
+
+  $(document).on("click", "#dec_btn", function(){
+    $('#form_block').hide();
+  });
+
+  $(document).on("click", "#add_form_btn", function(){
+    $('#form_block').show();
+  });
+});
