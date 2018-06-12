@@ -1,8 +1,6 @@
-<h1>Задачи</h1>
-<br />
-<br />
-<br />
 <body>
+  <h1>Задачи</h1>
+  <div style="height:3em"></div>
   <% @Projects.each do |pr| %>
     <h2><%= pr.title %></h2>
       <% pr.todos.each do |todo| %>
@@ -13,16 +11,16 @@
   <% end %>
   <h2>Новая задача</h2>
   <%= link_to "+", "#", id: "add_form_btn"%>
-  <div id="form_block" style="display:none">
-  <%= form_with scope: :todo, url: projects_path, local: true, id: "sub_form" do |form| %>
-    <p>
-      <%= form.text_field :text, value: "Название задачи..." %>
-      <%= form.collection_select :project_id, @Projects.all, :id, :title %>
-    </p>
-    <p>
-      <%= link_to "Отмена", "#", id: "dec_btn" %>
-      <%= link_to "Создать", projects_path(), id: "sub_btn" %>
-    </p>
+    <div id="form_block" style="display:none">
+      <%= form_with scope: :todo, url: projects_path, local: true, id: "sub_form" do |form| %>
+        <p>
+          <%= form.text_field :text, value: "Название задачи..." %>
+          <%= form.collection_select :project_id, @Projects.all, :id, :title %>
+        </p>
+        <p>
+          <%= link_to "Отмена", "#", id: "dec_btn" %>
+          <%= link_to "Создать", projects_path(), id: "sub_btn" %>
+        </p>
+    </div>
   <% end %>
-</div>
 </body>
