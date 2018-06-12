@@ -20,7 +20,7 @@
     <div id="form_block" style="display:none">
       <%= form_with scope: :todo, url: projects_path, local: true, id: "sub_form" do |form| %>
       <p>
-        <%= form.text_field :text, value: "Название задачи..." %>
+        <%= form.text_field :text, value: "Название задачи... " %>
         <%= form.collection_select :project_id, @Projects.all, :id, :title %>
       </p>
       <p>
