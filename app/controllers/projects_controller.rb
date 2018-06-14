@@ -4,20 +4,25 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    Todo[params[:id]].update_attributes(:isCompleted => params[:isCompleted])
+    @todo = Project.all.find(params[:todo][:pr_id]).todos.all.find(params[:todo][:id])
+    @todo.update_attribute(:isCompleted, params[:isCompleted] ) if @todo
+
+    redirect_back fallback_location: '/'
   end
 
   def create
-    # logger.tagged("BCX") {  }
-    logger.tagged("BCX") { logger.info params }
-    
-    @project = Project.all.find( params[:todo][:project_id] )
+
+    if params[:todo][:project_id] == "" and
+      redirect_back fallback_location: '/'
+      return;
+    end
+
+    @project = Project.all.find( params[:todo][:project_id])
     @todo = @project.todos.new text: params[:todo][:text]
     @project.todos << @todo
+
     if @project.save
       redirect_back fallback_location: '/'
     end
-    # .new( text:params[:text], isCompleted:params[:isCompleted] )
-    #Project[params[:id]] << @todo
   end
 end

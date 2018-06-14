@@ -4,30 +4,51 @@
     <title>pr_index</title>
   </head>
   <body>
-    <h1>Задачи</h1>
+    <div class="hd"><h2>Задачи</h2><%= link_to "+", "#", id: "add_form_btn"%></div>
     <div style="height:3em"></div>
-    <% @Projects.each do |pr| %>
-      <h2><%= pr.title %></h2>
-      <% pr.todos.each do |todo| %>
-        <p>
-          <input type="checkbox" id="coding" name="interest" value="coding">
-          <%= todo.text %><br>
-        </p>
-      <% end %>
-    <% end %>
-    <h2>Новая задача</h2>
-    <%= link_to "+", "#", id: "add_form_btn"%>
-    <div id="form_block" style="display:none">
-      <%= form_with scope: :todo, url: projects_path, local: true, id: "sub_form" do |form| %>
-      <p>
-        <%= form.text_field :text, value: "Название задачи... " %>
-        <%= form.collection_select :project_id, @Projects.all, :id, :title %>
-      </p>
-      <p>
-        <%= link_to "Отмена", "#", id: "dec_btn" %>
-        <%= link_to "Создать", projects_path(), id: "sub_btn" %>
-      </p>
+
+    <div class="container">
+      <div class="row row-grid">
+        <% @Projects.each do |pr| %>
+          <div class="col-lg-4 col-md-6">
+            <div class="project_card">
+              <div class="project_header">
+                <h3><%= pr.title %></h3>
+              </div>
+                <ul>
+                  <% pr.todos.each do |todo| %>
+                    <li>
+                      <label>
+                        <%= form_with scope: :todo, url: project_path(todo.id), local: true, id: "chk_form", method: :PATCH do |form| %>
+                          <%= check_box_tag 'isCompleted', !todo.isCompleted, todo.isCompleted %><span><%= todo.text %></span>
+                          <%= form.hidden_field "id", :value => todo.id %>
+                          <%= form.hidden_field "pr_id", :value => pr.id %>
+                        <% end %>
+                      </label>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+          </div>
+        <% end %>
+      </div>
     </div>
-  <% end %>
-</body>
+    <div class="inner">
+      <div id="form_block" style="display:none; background-color:white;" class="project_card">
+        <div class="project_header">
+          <h3>Новая задача</h3>
+        </div>
+        <%= form_with scope: :todo, url: projects_path, local: true, id: "sub_form" do |form| %>
+          <p>
+            <%= form.text_field :text, value: "Название задачи... " %>
+            <%= form.collection_select :project_id, @Projects.all, :id, :title, {prompt: "Категория"},  {class: "select2-selection"} %>
+          </p>
+          <p>
+            <%= link_to "Отмена", "#", id: "dec_btn"%>
+            <%= link_to "Создать", projects_path(), id: "sub_btn" %>
+          </p>
+        <% end %>
+      </div>
+    </div>
+  </body>
 </html>

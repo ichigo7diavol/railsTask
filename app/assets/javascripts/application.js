@@ -14,14 +14,19 @@
 //= require rails-ujs
 //= require_tree .
 
-//$("submit-btn").click(function(event) {
-//  event.preventDefault();
-//  alert("you clicked me");
-//  $("#form-id").submit();
-//});
-
-
 $(document).ready(function() {
+  $('input').iCheck({
+    checkboxClass: 'icheckbox_square-blue'
+  });
+
+  $('input').on('ifChecked', function(){
+    $(this).parent().parent().submit();
+  });
+
+  $('input').on('ifUnchecked', function(){
+    $(this).parent().parent().parent().submit();
+  });
+
   $(document).on("click", "#sub_btn", function(){
     event.preventDefault();
     $("#sub_form").submit();
