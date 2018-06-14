@@ -20,10 +20,12 @@ $(document).ready(function() {
   });
 
   $('input').on('ifChecked', function(){
+    event.preventDefault();
     $(this).parent().parent().submit();
   });
 
   $('input').on('ifUnchecked', function(){
+    event.preventDefault();
     $(this).parent().parent().parent().submit();
   });
 
