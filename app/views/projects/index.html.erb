@@ -41,8 +41,10 @@
         <%= form_with scope: :todo, url: projects_path, local: true, id: "sub_form" do |form| %>
           <p>
             <%= form.text_field :text, value: "Название задачи... " %>
-            <%= form.collection_select :project_id, @Projects.all, :id, :title, {prompt: "Категория"},  {class: "select2-selection"} %>
           </p>
+          <div id="select_div">
+            <%= form.collection_select :project_id, @Projects.all, :id, :title, {prompt: "Категория"},  {class: "select2-selection"} %>
+          </div>
           <p>
             <%= link_to "Отмена", "#", id: "dec_btn"%>
             <%= link_to "Создать", projects_path(), id: "sub_btn" %>

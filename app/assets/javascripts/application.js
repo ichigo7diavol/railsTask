@@ -15,6 +15,12 @@
 //= require_tree .
 
 $(document).ready(function() {
+
+  $('select').select2({
+    dropdownParent: $("#select_div"),
+    minimumResultsForSearch: -1
+  });
+
   $('input').iCheck({
     checkboxClass: 'icheckbox_square-blue'
   });

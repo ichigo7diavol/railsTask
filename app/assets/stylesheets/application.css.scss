@@ -83,10 +83,11 @@ body {
   -moz-box-shadow: 10px 9px 1px -5px rgba(0,0,0,0.15);
   box-shadow: 10px 9px 1px -5px rgba(0,0,0,0.15);
   padding-bottom: 0.5em;
+  border: 1px solid black;
 }
 
-.project_card {
-  border: 1px solid black;
+.project_card a {
+  margin-left: 1em;
 }
 
 .project_card h3 {
@@ -115,10 +116,6 @@ body {
   -webkit-box-shadow: inset 0px -5px 3px -2px rgba(0,0,0,0.27);
   -moz-box-shadow: inset 0px -5px 3px -2px rgba(0,0,0,0.27);
   box-shadow: inset 0px -5px 3px -2px rgba(0,0,0,0.27);
-}
-
-.project_card span {
-  margin-left: 0.5em;
 }
 
 .project_card input[type="text"] {
@@ -178,19 +175,22 @@ body {
   height: 200px;
 }
 
+#select_div {
+  position: static;
+  margin-left: 1em;
+}
+
 .select2-selection, .select2-selection__rendered, .select2-selection__arrow {
    height: 2em !important;
-
    span {
-       line-height: 1em !important;
+       line-height: 2em !important;
        text-align: left;
+       font-size: 1em;
    }
-   margin-top: 1em;
-   margin-left: 1em;
 }
 
 .select2-selection {
-   border-radius: 0 !important;
+  border-radius: 0 !important;
 }
 
 span {
