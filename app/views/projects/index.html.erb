@@ -20,7 +20,7 @@
                     <li>
                       <label>
                         <%= form_with scope: :todo, url: project_path(todo.id), local: true, id: "chk_form", method: :PATCH do |form| %>
-                          <%= check_box_tag 'isCompleted', !todo.isCompleted, todo.isCompleted %><span><%= todo.text %></span>
+                          <%= check_box_tag 'isCompleted', !todo.isCompleted, todo.isCompleted %> <span><%= todo.text %></span>
                           <%= form.hidden_field "id", :value => todo.id %>
                           <%= form.hidden_field "pr_id", :value => pr.id %>
                         <% end %>

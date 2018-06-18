@@ -1,6 +1,13 @@
 class ProjectsController < ApplicationController
   def index
+    respond_to :html, :json
     @Projects = Project.all
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json {
+        render :json => @Projects, :include => [:todos]
+       }
+     end
   end
 
   def update
